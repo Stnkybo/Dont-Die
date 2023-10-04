@@ -1,0 +1,56 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        canvas {
+            border: 1px solid #d3d3d3;
+            background-color: #f1f1f1;
+        }
+
+        #deathscreen {
+            width: 50%;
+            /* replace with the percentage you want */
+            height: auto;
+        }
+    </style>
+</head>
+
+<body onload="startGame()">
+    <h1 id="dead?" hidden="true">U ded</h1>
+    <script src="game.js">
+    </script>
+
+    <img id="deathscreen" hidden="true" src="https://i7.photo.2gis.com/images/profile/30258560118719211_3a8c_1920x.jpg"
+        alt="frick You">
+    <script>
+        let keys = new Set();
+
+        window.addEventListener('keydown', (event) => {
+            keys.add(event.key);
+        });
+
+        window.addEventListener('keyup', (event) => {
+            keys.delete(event.key);
+        });
+
+        function isKeyDown(key) {
+            return keys.has(key);
+        }
+
+        function checkForInput() {
+            if (isKeyDown('a')) myGamePiece.speedX = -5; //Left key
+            if (isKeyDown('w')) myGamePiece.speedY = -5; //Up key
+            if (isKeyDown('d')) myGamePiece.speedX = 5; //Right key
+            if (isKeyDown('s')) myGamePiece.speedY = 5; //Down key
+        }
+
+        setInterval(checkForInput, 0); // Check for input every 100ms
+
+    </script>
+    <br>
+    <p>Use the wsad to stay in the alive</p>
+    <p>How long can you stay alive?</p>
+    <audio id="oof" preload="auto" src="https://www.myinstants.com/media/sounds/classic_hurt.mp3"></audio>
+    <audio id="7f5147b1-5c71-4664-9ca0-2c74ddb4326c" data-testid="audioPlayerAudio" loop="true" preload="auto"
+        type="audio/mpeg"
+        src="https://us-tuna-sounds-files.voicemod.net/7f5147b1-5c71-4664-9ca0-2c74ddb4326c-1694030801532.mp3"></audio>
+</body>
